@@ -46,13 +46,13 @@ def replaceKeys(quotes):
         quotesWithReadableKey.append(qReadableKey)
     return quotesWithReadableKey
 
-def getRealtimeQuotes(symbols):
+def getQuotes(symbols):
     '''
     get real-time quotes (index, last trade price, last trade time, etc) for stocks, using google api:
     http://finance.google.com/finance/info?client=ig&q=symbols
     Unlike python package 'yahoo-finance', There is no delay for NYSE and NASDAQ stocks in googlefinance.
     :param symbols: a list of stock symbols
-    :return: real-time quote
+    :return: real-time quotes
     '''
     content = json.loads(request(symbols))
     return replaceKeys(content);
@@ -66,6 +66,6 @@ if __name__ == '__main__':
     symbols = symbols.split(',')
 
     try:
-        print json.dumps(getRealtimeQuotes(symbols), indent=2)
+        print json.dumps(getQuotes(symbols), indent=2)
     except:
         print "Fail"
