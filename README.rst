@@ -1,30 +1,45 @@
-# googlefinance
+googlefinance
+=============
+
 Python module to get stock data from Google Finance API
 
-This module provides **no delay**, **real time** stock data in NYSE & NASDAQ. 
- 
-Another awesome module, [yahoo-finance](https://github.com/lukaszbanasiak/yahoo-finance)'s data is delayed by 15 min, but it provides convenient apis to fetch historical day-by-day stock data.
+This module provides **no delay**, **real time** stock data in NYSE &
+NASDAQ.
 
-##Install
+Another awesome module,
+`yahoo-finance <https://github.com/lukaszbanasiak/yahoo-finance>`__'s
+data is delayed by 15 min, but it provides convenient apis to fetch
+historical day-by-day stock data.
+
+Install
+-------
+
 From PyPI with pip:
-	
-	$pip install googlefinance
+
+::
+
+    $pip install googlefinance
 
 From development repo (requires git)
 
-	$git clone https://github.com/hongtaocai/googlefinance.git
-	$cd googlefinance
-	$python setup.py install
+::
 
-##Usage example
+    $git clone https://github.com/hongtaocai/googlefinance.git
+    $cd googlefinance
+    $python setup.py install
 
-	>>> from googlefinance import getQuotes
-	>>> import json
-	>>> print json.dumps(getQuotes('AAPL'), indent=2)
-	[
-	  {
-    	"Index": "NASDAQ", 
- 	    "LastTradeWithCurrency": "129.09", 
+Usage example
+-------------
+
+::
+
+    >>> from googlefinance import getQuotes
+    >>> import json
+    >>> print json.dumps(getQuotes('AAPL'), indent=2)
+    [
+      {
+        "Index": "NASDAQ", 
+        "LastTradeWithCurrency": "129.09", 
         "LastTradeDateTime": "2015-03-02T16:04:29Z", 
         "LastTradePrice": "129.09", 
         "Yield": "1.46", 
@@ -62,3 +77,4 @@ From development repo (requires git)
         "ID": "304466804484872"
       }
     ]
+
