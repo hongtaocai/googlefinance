@@ -1,12 +1,8 @@
-'''
-MIT License
-'''
-
 from urllib2 import Request, urlopen
 import json
 import sys
 
-__author__ = 'hongtaocai@gmail.com'
+__author__ = 'Hongtao Cai'
 
 googleFinanceKeyToFullName = {
     u'id'     : u'ID',
@@ -48,12 +44,24 @@ def replaceKeys(quotes):
 
 def getQuotes(symbols):
     '''
-    get real-time quotes (index, last trade price, last trade time, etc) for stocks, using google api:
-    http://finance.google.com/finance/info?client=ig&q=symbols
-    Unlike python package 'yahoo-finance', There is no delay for NYSE and NASDAQ stocks in googlefinance.
-    :param symbols: a list of stock symbols
-    :return: real-time quotes
+    get real-time quotes (index, last trade price, last trade time, etc) for stocks, using google api: http://finance.google.com/finance/info?client=ig&q=symbols
+
+    Unlike python package 'yahoo-finance' (15 min delay), There is no delay for NYSE and NASDAQ stocks in 'googlefinance' package.
+    
+    example:
+    quotes = getQuotes('AAPL')
+    return:
+    [{u'Index': u'NASDAQ', u'LastTradeWithCurrency': u'129.09', u'LastTradeDateTime': u'2015-03-02T16:04:29Z', u'LastTradePrice': u'129.09', u'Yield': u'1.46', u'LastTradeTime': u'4:04PM EST', u'LastTradeDateTimeLong': u'Mar 2, 4:04PM EST', u'Dividend': u'0.47', u'StockSymbol': u'AAPL', u'ID': u'22144'}]
+    
+    quotes = getQuotes(['AAPL', 'GOOG'])
+    return:
+    [{u'Index': u'NASDAQ', u'LastTradeWithCurrency': u'129.09', u'LastTradeDateTime': u'2015-03-02T16:04:29Z', u'LastTradePrice': u'129.09', u'Yield': u'1.46', u'LastTradeTime': u'4:04PM EST', u'LastTradeDateTimeLong': u'Mar 2, 4:04PM EST', u'Dividend': u'0.47', u'StockSymbol': u'AAPL', u'ID': u'22144'}, {u'Index': u'NASDAQ', u'LastTradeWithCurrency': u'571.34', u'LastTradeDateTime': u'2015-03-02T16:04:29Z', u'LastTradePrice': u'571.34', u'Yield': u'', u'LastTradeTime': u'4:04PM EST', u'LastTradeDateTimeLong': u'Mar 2, 4:04PM EST', u'Dividend': u'', u'StockSymbol': u'GOOG', u'ID': u'304466804484872'}]
+    
+    :param symbols: a single symbol or a list of stock symbols
+    :return: real-time quotes list
     '''
+    if type(symbols) == type('str'):
+        symbols = [symbols]
     content = json.loads(request(symbols))
     return replaceKeys(content);
 
