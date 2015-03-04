@@ -27,7 +27,8 @@ def request(symbols):
     url = buildUrl(symbols)
     req = Request(url)
     resp = urlopen(req)
-    content = resp.read().decode().strip()
+    # remove special symbols such as the pound symbol
+    content = resp.read().decode('ascii', 'ignore').strip()
     content = content[3:]
     return content
 
