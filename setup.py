@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'googlefinance',
   packages = ['googlefinance'], # this must be the same as the name above
-  version = '0.5',
+  version = '0.7',
   description = 'Python module to get real-time (no delay) stock data from Google Finance API',
   author = 'Hongtao Cai',
   author_email = 'caiht.ht@gmail.com',
