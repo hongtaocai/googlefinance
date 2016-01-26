@@ -18,7 +18,16 @@ googleFinanceKeyToFullName = {
     u'lt_dts' : u'LastTradeDateTime',
     u'lt'     : u'LastTradeDateTimeLong',
     u'div'    : u'Dividend',
-    u'yld'    : u'Yield'
+    u'yld'    : u'Yield',
+    u's'      : u'LastTradeSize',
+    u'c'      : u'Change',
+    u'c'      : u'ChangePercent',
+    u'el'     : u'ExtHrsLastTradePrice',
+    u'el_cur' : u'ExtHrsLastTradeWithCurrency',
+    u'elt'    : u'ExtHrsLastTradeDateTimeLong',
+    u'ec'     : u'ExtHrsChange',
+    u'ecp'    : u'ExtHrsChangePercent',
+    u'pcls_fix': u'PreviousClosePrice'
 }
 
 def buildUrl(symbols):
