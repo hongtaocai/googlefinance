@@ -1,5 +1,6 @@
 import json
 import sys
+import demjson
 
 try:
     from urllib.request import Request, urlopen
@@ -36,6 +37,10 @@ def buildUrl(symbols):
     return 'http://finance.google.com/finance/info?client=ig&q=' \
         + symbol_list
 
+def buildNewsUrl(symbol, qs=''): #&start=0&num=100
+   return 'http://www.google.com/finance/company_news?output=json&q=' \
+        + symbol + qs
+
 def request(symbols):
     url = buildUrl(symbols)
     req = Request(url)
@@ -44,6 +49,26 @@ def request(symbols):
     content = resp.read().decode('ascii', 'ignore').strip()
     content = content[3:]
     return content
+
+def requestNews(symbol):
+    url = buildNewsUrl(symbol)
+    print "url: ", url
+    req = Request(url)
+    resp = urlopen(req)
+    content = resp.read()
+    
+    content_json = demjson.decode(content)
+
+    #print "total news: ", content_json['total_number_of_news']
+
+    article_json = []
+    news_json = content_json['clusters']
+    for cluster in news_json:
+        for article in cluster:
+            if article == 'a':
+                article_json.extend(cluster[article])
+
+    return article_json
 
 def replaceKeys(quotes):
     global googleFinanceKeyToFullName
@@ -79,6 +104,9 @@ def getQuotes(symbols):
     content = json.loads(request(symbols))
     return replaceKeys(content);
 
+def getNews(symbol):
+    return requestNews(symbol);
+
 if __name__ == '__main__':
     try:
         symbols = sys.argv[1]
@@ -87,7 +115,5 @@ if __name__ == '__main__':
 
     symbols = symbols.split(',')
 
-    try:
-        print(json.dumps(getQuotes(symbols), indent=2))
-    except:
-        print("Fail")
+    print(json.dumps(getNews("GOOG"), indent=2))
+    print(json.dumps(getQuotes(symbols), indent=2))        
