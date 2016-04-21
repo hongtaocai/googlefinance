@@ -58,3 +58,30 @@ From development repo (requires git)
         "ID": "978541942832888"
       }
     ]
+
+    >>> from googlefinance import getNews
+    >>> import json
+    >>> print json.dumps(getNews("GOOG"), indent=2)
+    [
+      {
+        "usg": "AFQjCNEndnF6ktTO4yZ7DO6VWNNKuNLRqA",
+        "d": "Feb 26, 2016",
+        "tt": "1456499673",
+        "sp": "Alphabet logo Alphabet Inc (NASDAQ:GOOG) CEO Lawrence Page sold 33,332 shares of the firm&#39;s stock in a transaction dated Tuesday, March 22nd.",
+        "s": "Financial Market News",
+        "u": "http://www.financial-market-news.com/alphabet-inc-goog-ceo-lawrence-page-sells-33332-shares/996645/",
+        "t": "Alphabet Inc (GOOG) CEO Lawrence Page Sells 33332 Shares",
+        "sru": "http://news.google.com/news/url?sa=T&ct2=us&fd=S&url=http://www.financial-market-news.com/alphabet-inc-goog-ceo-lawrence-page-sells-33332-shares/996645/&cid=52779068349451&ei=jVn_VsrfApXcuATP4JvQBw&usg=AFQjCNHkHXAJIZRMHo9ciTAb7OWzj9pKvA"
+      },
+      {
+        "usg": "AFQjCNHfaafHtJPn5GWu-6RiVG_J_1TYUw",
+        "d": "Mar 26, 2016",
+        "tt": "1458951075",
+        "sp": "You don&#39;t get to $300 billion without overcoming your fair share of problems. This truism certainly applies individually to tech titans Alphabet (NASDAQ:GOOG) (NASDAQ:GOOGL) and Apple (NASDAQ:AAPL) at different points in their respective corporate&nbsp;...",
+        "s": "Motley Fool",
+        "u": "http://www.fool.com/investing/general/2016/03/25/alphabet-inc-eyes-a-new-road-to-mobile-success-in.aspx",
+        "t": "Alphabet Inc Eyes a New Road to Mobile Success in the Most Unlikely Places",
+        "sru": "http://news.google.com/news/url?sa=T&ct2=us&fd=S&url=http://www.fool.com/investing/general/2016/03/25/alphabet-inc-eyes-a-new-road-to-mobile-success-in.aspx&cid=52779068349451&ei=jVn_VsrfApXcuATP4JvQBw&usg=AFQjCNEFa7EPWB-kyl2C23OTRHOWRJN52w"
+      }
+    ]
+
