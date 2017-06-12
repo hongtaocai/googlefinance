@@ -22,7 +22,7 @@ googleFinanceKeyToFullName = {
     u'yld'    : u'Yield',
     u's'      : u'LastTradeSize',
     u'c'      : u'Change',
-    u'c'      : u'ChangePercent',
+    u'cp'      : u'ChangePercent',
     u'el'     : u'ExtHrsLastTradePrice',
     u'el_cur' : u'ExtHrsLastTradeWithCurrency',
     u'elt'    : u'ExtHrsLastTradeDateTimeLong',
